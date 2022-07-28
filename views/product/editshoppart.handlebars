@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Shop Parts</title>
+    <link rel="stylesheet" href="/form.css">
+</head>
+<style>
+    body {
+        background: #f6f6f6;
+        font-family: sans-serif;
+    }
+
+    /* Index style */
+
+    .link,
+    a:visited {
+        width: 550px;
+        margin: 0 auto;
+        color: tomato;
+        text-align: center;
+        margin-top: 150px;
+    }
+
+    /* Form style */
+
+    h1 {
+        text-align: center;
+    }
+
+    fieldset {
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+
+    .box1 {
+        margin: 10px 25px 10px 0;
+        display: inline-block;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 7px;
+    }
+
+    #title,
+    #message {
+        width: 80%;
+    }
+
+    #output {
+        overflow-wrap: break-word;
+    }
+
+    /* Logo style */
+
+    .content {
+        background: white;
+        max-width: 550px;
+        margin: 0 auto;
+        padding: 3em;
+    }
+
+    #conference-logo {
+        background: tomato;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    #conference-logo .half-circle {
+        background: white;
+        width: 46px;
+        height: 92px;
+        border-radius: 0 46px 46px 0;
+
+        position: absolute;
+        top: 4px;
+        left: 50%;
+
+        animation: 3s ease-out infinite rotate;
+        position: relative;
+        transform-origin: 0 50%;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg)
+        }
+
+        50% {
+            transform: rotate(22.5deg)
+        }
+
+        100% {
+            transform: rotate(0deg)
+        }
+    }
+</style>
+
+<body>
+
+    <div class="content">
+        <div id="conference-logo">
+            <div class="dot"></div>
+            <div class="half-circle"></div>
+        </div>
+
+        <h1>Add Product</h1>
+        <br>
+        <br>
+
+        <form method="post">
+            <fieldset>
+                <legend>Basic Information (Required)</legend>
+                <div class="col-md-6 p-4">
+
+                    <img id="img" src="/img/no-image.jpg" alt="img" class="border img-thumbnail img-fluid">
+                    {{!—- Hidden field to submit URL of poster to the server --}}
+                    <input id="imgURL" type="hidden" name="imgURL">
+                    <div class="text-danger small mb-2" id="imgErr" style="display:none"></div>
+                    <div class="custom-file mb-2 ">
+                        <input type="file" class="custom-file-input" id="imgUpload" name="imgUpload"
+                            accept="image/png,image/jpeg,image/jpg,image/gif">
+                        <label class="custom-file-label" for="customFile">Choose File</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="box1">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" value="{{shoppart.name}}" tabindex="1">
+                    </div>
+                    <div class="box1">
+                        <label for="price">Price</label>
+                        <input type="text" id="price" name="price" value="{{shoppart.price}}" tabindex="2">
+                    </div>
+
+
+                    <button type="submit" id="submit" name="submit" tabindex="10">Submit</button>
+        </form>
+    </div>
+
+    <script src="/validate.js"></script>
+</body>
+
+</html>

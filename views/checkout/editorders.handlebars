@@ -1,0 +1,163 @@
+<div class="container mt-3">
+	<div class="card card-body">
+		<h3>Edit Order {{orders.orderId}} of User {{orders.userId}}</h3>
+		<form action="" method="post" class="needs-validation" novalidate>
+			<div class="form-group">
+			</div>
+
+			<div class="form-group">
+				<div class="row ">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-3 ">
+						<label class="font-italic">Order Date</label>
+						<input id="datepicker" width="200" name="orderDate"
+							value="{{formatDate orders.orderDate 'DD/MM/YYYY'}}" readonly />
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Product ID</label>
+						<br>
+						<div>
+							<input type="number" class="form-control" id="productId" name="productId"
+								value="{{orders.productId}}">
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic" for="status">Delivery Status</label>
+						<br>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="deliveryStatus" id="statusPending"
+								value="Pending" {{checkboxCheck orders.deliveryStatus "Pending" }}
+								onclick="ensureOneCheck('deliveryStatus', 'deliveryStatusErr', 'btnSubmit')">
+							<label class="form-check-label" for="pending">Pending</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="deliveryStatus" id="statusDelivered"
+								value="Delivered" {{checkboxCheck orders.deliveryStatus "Delivered" }}
+								onclick="ensureOneCheck('deliveryStatus', 'deliveryStatusErr', 'btnSubmit')">
+							<label class="form-check-label" for="delivered">Delivered</label>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Product Name</label>
+						<br>
+						<div>
+							<input type="text" class="form-control" id="productName" name="productName"
+								value="{{orders.productName}}">
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Quantity</label>
+						<br>
+						<div>
+							<input type="number" class="form-control" id="quantity" name="quantity" step="1" min="1"
+								value="{{orders.quantity}}">
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Unit Price</label>
+						<br>
+						<div>
+							<input type="number" class="form-control" id="unitPrice" name="unitPrice" min="0.00"
+								max="10000.00" step="0.01" value="{{orders.unitPrice}}">
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Amount</label>
+						<br>
+						<div>
+							<input type="number" class="form-control" id="amount" name="amount" min="0.00"
+								max="10000.00" step="0.01" value="{{orders.amount}}">
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="form-group mb-4">
+				<label for="inputAddress">Address</label>
+				<input type="text" class="form-control" id="address" name="address" value="{{orders.address}}">
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Postal Code</label>
+						<br>
+						<div>
+							<input type="text" class="form-control" id="postalCode" name="postalCode"
+								value="{{orders.postalCode}}">
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Unit Number</label>
+						<br>
+						<div>
+							<input type="text" class="form-control" id="unitNumber" name="unitNumber"
+								value="{{orders.unitNumber}}">
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="form-group mb-4">
+				<label class="font-italic" for="notes">Extra Notes</label>
+				<textarea class="form-control" id="notes" name="notes" rows="7"
+					maxlength="2000">{{orders.notes}}</textarea>
+			</div>
+			<br>
+			<button id="btnSubmit" type="submit" class="btn btn-primary">Save
+			</button>
+		</form>
+	</div>
+</div>
+
+<script>
+	$('#datepicker').datepicker({
+		format: 'dd/mm/yyyy',
+		uiLibrary: 'bootstrap4',
+		value: moment().format('DD/MM/YYYY'),
+	});
+
+	// Example starter JavaScript for disabling form submissions if there are invalid fields
+	(function () {
+		'use strict'
+
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		var forms = document.querySelectorAll('.needs-validation')
+
+		// Loop over them and prevent submission
+		Array.prototype.slice.call(forms)
+			.forEach(function (form) {
+				form.addEventListener('submit', function (event) {
+					if (!form.checkValidity()) {
+						event.preventDefault()
+						event.stopPropagation()
+					}
+
+					form.classList.add('was-validated')
+				}, false)
+			})
+	})()
+</script>

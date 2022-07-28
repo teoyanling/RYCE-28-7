@@ -1,0 +1,106 @@
+<div class="container bg-color mt-3">
+  <form method="post">
+    <div class="row">
+      <div class="col-md-4 p-4 bg-white">
+        <div class="profile-img">
+
+          <a href="{{imgURL}}" data-title="{{title}}" data-toggle="lightbox">
+            <img src="{{user.imgURL}}" alt="Poster" class="img-thumbnail img-fluid mb-2"
+              onerror="this.src='/img/no-image.jpg'">
+          </a>
+
+        </div>
+        <h3 class="text-dark">Welcome back, <br>
+          {{user.firstname}} {{user.lastname}} !
+        </h3>
+        <nav class="navbar navbar-light navbar-expand-sm px-0 flex-row flex-nowrap">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarWEX"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse" id="navbarWEX">
+            <div class="nav flex-sm-column flex-row">
+              <h4>
+                <a class="nav-item nav-link  actives" href="/user/profile">Profile</a>
+                <a href="/user/changepwd/{{user.id}}" class="nav-item nav-link text-dark">Change Password</a>
+                <a href="/user/addressList" class="nav-item nav-link text-dark">Address</a>
+                <a href="/user/paymentMethod" class="nav-item nav-link text-dark">Payment Method</a>
+                {{#if user}}
+                {{#checkCustomer user.dataValues.role}}
+                <div class="nav-item dropdown">
+                  <a href="#" class="nav-link text-dark dropdown-toggle" data-toggle="dropdown"
+                    id="navbarDropdownMenuLink">My Booking</a>
+                  <div class="dropdown-menu">
+                    <a href="/user/testDrivehistory" class="dropdown-item">Test Drive</a>
+                    <a href="/user/servicingHistory" class="dropdown-item">Servicing</a>
+                  </div>
+                </div>
+                <a href="/user/ordersHistory" class="nav-item nav-link text-dark">Orders</a>
+                {{/checkCustomer}}
+                {{/if}}
+              </h4>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="col-md-8 p-4">
+        <div class="container">
+          <div class=" center-block">
+            <br>
+            <h2>Profile
+              <span class="pull-right">
+                <a href="/user/editprofile/{{user.id}}" class="btn btn-dark rounded-lg profile-edit-btn ">Edit
+                  Profile</a>
+              </span>
+            </h2>
+            <br>
+          </div>
+          <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input type="text" class="form-control" name="firstname" value="{{user.firstname}}" disabled>
+          </div>
+          <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input type="text" class="form-control" name="lastname" value="{{user.lastname}}" disabled>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" value="{{user.email}}" disabled>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control" name="phone" placeholder="Phone Numebr" value="{{user.phone}}"
+              disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <input type="text" class="form-control" name="gender" placeholder="Gender" value="{{user.gender}}" disabled>
+          </div>
+
+          <div class="form-group">
+            <label for="bday">Birthday</label>
+            <input type="text" class="form-control" name="bday" value="{{formatDate user.bday 'DD/MM/YYYY'}}" disabled>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </form>
+</div>
+
+<style>
+  .btn-dark {
+    background-color: black;
+    color: white;
+    border: none;
+  }
+</style>
+<script>
+  $('#datepicker').datepicker({
+    format: 'dd/mm/yyyy',
+    uiLibrary: 'bootstrap4',
+    value: moment().format('DD/MM/YYYY'),
+  });
+</script>

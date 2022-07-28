@@ -1,0 +1,41 @@
+<div class="container mt-3">
+]
+  <h3 class="text-white">Our Cars</h3>
+  {{!-- <div class="row">
+    <div class="col-md-8"> --}}
+        {{#if products}}
+      {{#each products}}
+     <div class="ourcar">
+        <div class="row ">
+          <div class="col-md-4 ">
+            <a href="{{imgURL}}" data-title="{{title}}" data-toggle="lightbox">
+              <img src="{{imgURL}}" alt="img" class="img-thumbnail img-fluid mb-2"
+                onerror="this.src='/img/no-image.jpg'">
+            </a>
+            <h4 class="text-white">Car Name:<br>{{productname}}<br></h4>
+            <p class="text-white" class="price">Price:<br>$ {{price}}<br></p>
+            <p class="text-white" class="coe">COE:<br>$ {{coe}}<br></p>
+            <p class="text-white" class="hireprice6">Hire Price (6 Months):<br>$ {{hireprice6}}<br></p>
+            <p class="text-white" class="hireprice12">Hire Price (12 Months)<br>$ {{hireprice12}}<br></p>
+            <p class="text-white" class="cartype">Car Type:<br>{{cartype}}<br></p>
+            <p class="text-white" class="description">Description:<br>{{description}}<br></p>
+            <button data-name="productname" data-price="price" class="add-to-cart btns">
+              Add to cart
+            </button>
+          </div>
+          <br>
+          <br>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{else}}
+  <h3 class="text-white">No Cars Added</h3>
+  {{/if}}
+
+  <script>
+    $('[data-toggle=confirmation]').confirmation({
+      rootSelector: '[data-toggle=confirmation]',
+    });
+  </script>

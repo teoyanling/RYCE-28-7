@@ -1,0 +1,62 @@
+<div class="container">
+    <h1 class="text-white">Test Drive Booking Management</h1>
+    <a href="/booking/createTestDBooking" class="btn rounded-lg ">Add New</a>
+    <br><br>
+    <section id="search" class="search-wrap">
+    <form action="/booking/search" class="search=form">
+    <i class="fas fa-search text-white"></i>
+    <input type="search" name="term" placeholder="Booking ID">
+    <input type="submit" value="Search">
+    </form>
+    </section>
+    <div>
+        
+    </div>
+    <div>
+        <table class="table tab">
+            <thead>
+                <tr>
+
+                    <th>Booking ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Car Model</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Location</th>
+                    <th>Amend</th>
+                </tr>
+            </thead>
+            {{#if bookings}}
+            <tbody>
+                {{#each bookings}}
+                <tr>
+                    <td>{{bookingId}} </td>
+                    <td>{{name}}</td>
+                    <td>{{email}}</td>
+                    <td>{{num}}</td>
+                    <td>{{cars}}</td>
+                    <td>{{formatDate date 'DD/MM/YYYY'}}</td>
+                    <td>{{time}}</td>
+                    <td>{{location}}</td>
+                    <td>
+                        <a href="/booking/editTestDBooking/{{bookingId}}" class="text-danger">
+                            <i class="fas fa-pencil-alt"></i>
+                            Edit
+                        </a>
+                    </td>
+
+                </tr>
+                {{/each}}
+                {{else}}
+                <tr>
+                    <td>
+                        <h3>No test drive booking</h3>
+                    </td>
+                </tr>
+            </tbody>
+            {{/if}}
+        </table>
+    </div>
+</div>

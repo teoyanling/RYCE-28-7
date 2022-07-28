@@ -1,0 +1,295 @@
+<div class="container bg-color mt-3">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4 p-4 bg-white">
+                <div class="profile-img">
+                    <a href="{{imgURL}}" data-title="{{title}}" data-toggle="lightbox">
+                        <img src="{{user.imgURL}}" alt="Poster" class="img-thumbnail img-fluid mb-2"
+                            onerror="this.src='/img/no-image.jpg'">
+                    </a>
+                </div>
+                <h3 class="text-dark">Welcome back, {{user.firstname}} {{user.lastname}} !</h3>
+                <nav class="navbar navbar-light navbar-expand-sm px-0 flex-row flex-nowrap">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarWEX"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse" id="navbarWEX">
+                        <div class="nav flex-sm-column flex-row">
+                            <h4>
+                                <a class="nav-item nav-link text-dark" href="/user/profile">Profile</a>
+                                <a href="/user/changepwd/{{user.id}}" class="nav-item nav-link text-dark">Change
+                                    Password</a>
+                                <a href="/user/addressList" class="nav-item nav-link text-dark">Address</a>
+                                <a href="/user/paymentMethod" class="nav-item nav-link text-dark">Payment Method</a>
+                                {{#if user}}
+                                {{#checkCustomer user.dataValues.role}}
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle actives" data-toggle="dropdown"
+                                        id="navbarDropdownMenuLink">My Booking</a>
+                                    <div class="dropdown-menu">
+                                        <a href="/user/testDrivehistory" class="dropdown-item actives">Test Drive</a>
+                                        <a href="/user/servicingHistory" class="dropdown-item">Servicing</a>
+                                    </div>
+                                </div>
+                                <a href="/user/ordersHistory" class="nav-item nav-link text-dark ">Orders</a>
+                                {{/checkCustomer}}
+                                {{/if}}
+                            </h4>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-md-8 p-4">
+                <div>
+                    <h1>Servicing Bookings</h1>
+                    <h6 class="mb-5">View, reschedule or cancel your Servicing booking.</h6>
+                    <a href="/service/sform" class="btn btn-light rounded-lg ">Book</a> </td>
+                    <br><br>
+                </div>
+                <div>
+                    <ul class="nav nav-pills tab">
+                        <li class="nav-item">
+                            <a class="nav-link tablinks active" href="#">Upcoming</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">History</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+
+                    {{!-- <table class="table tab">
+                        <thead>
+                            <tr>
+                                <th>Car Plate</th>
+                                <th>Car Model</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Service Type</th>
+                                <th>Location</th>
+                                <th>Remarks</th>
+                                <th>Amend</th>
+                            </tr>
+                        </thead>
+                        {{#if services}}
+                        <tbody>
+                            {{#each services}}
+                            <tr>
+
+                                <td>{{carP}}</td>
+                                <td>{{carM}}</td>
+                                <td>{{formatDate date 'DD/MM/YYYY'}}</td>
+                                <td>{{time}}</td>
+                                <td>{{classification}}</td>
+                                <td>{{location}}</td>
+                                <td>
+                                    <button type="button" class=" btn btn-primary" data-toggle="modal"
+                                        data-target="#exampleModal{{serviceId}}">
+                                        Customer's Remarks
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal{{serviceId}}" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h2 class="modal-title" id="exampleModalLabel">More Details of
+                                                        {{title}} booking remarks </h2>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+
+
+                                                    <div>
+                                                        <h4>Remarks: </h4>
+                                                        <h5>{{story}}</h5>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <a href="/service/editServices/{{userId}}" class="text-danger">
+                                        <i class="fas fa-pencil-alt"></i>
+                                        Edit
+                                    </a>
+                                </td>
+
+                            </tr>
+                            {{/each}}
+                            {{else}}
+                            <tr>
+                                <td>
+                                    <h3>No servicing booking, start booking?</h3>
+                                    <a href="/service/sform" class="btn btn-light rounded-lg ">Book</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        {{/if}}
+                    </table> --}}
+
+
+                    <div class="card card-body">
+
+                        <div class="container">
+                            {{#if services}}
+                            {{#each services}}
+                            <div class="card border-danger mb-2 w-100 mx-auto">
+                                <div class="card-header">
+                                    <p class="font-italic text-dark">Customer Id:</p>
+                                    <h6 class="text-danger ">{{title}}</h6>
+
+                                </div>
+
+
+
+                                <div class=" card-body">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-2">
+                                            <p class="font-italic text-dark">Name</p>
+                                            <p class="text-info">
+                                                {{ name}}
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-2">
+                                            <p class="font-italic text-dark">Email</p>
+                                            <p class="text-info">
+                                                {{ email}}
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-2">
+                                            <p class="font-italic text-dark">Phone</p>
+                                            <p class="text-info">
+                                                {{ phone}}
+                                            </p>
+                                        </div>
+
+                                        <div class="col-sm-12 col-md-12 col-lg-2">
+                                            <p class="font-italic text-dark">Car Plate</p>
+                                            <p class="text-info">
+                                                {{ carP}}
+                                            </p>
+                                        </div>
+
+                                        <div class="col-sm-12 col-md-12 col-lg-3">
+                                            <p class="font-italic text-dark">Car Model</p>
+                                            <p class="text-info">
+                                                {{ carM}}
+                                            </p>
+                                        </div>
+
+                                        <div class="col-sm-12 col-md-12 col-lg-2">
+                                            <p class="ffont-italic text-dark">Date</p>
+                                            <p class="text-info">{{formatDate dateRelease 'DD MMM YYYY'}}</p>
+                                        </div>
+
+                                        <div class="col-sm-12 col-md-12 col-lg-2">
+                                            <p class="font-italic text-dark">Time</p>
+                                            <p class="text-info">
+                                                {{ time}}
+                                            </p>
+                                        </div>
+
+                                        <div class="col-sm-12 col-md-12 col-lg-2">
+                                            <p class="font-italic text-dark">Service Type</p>
+                                            <p class="text-info">{{classification}}</p>
+                                        </div>
+
+                                        <div class="col-sm-12 col-md-12 col-lg-2">
+                                            <p class="font-italic text-dark">Location</p>
+                                            <p class="text-info">
+                                                {{ location}}
+                                            </p>
+                                        </div>
+
+
+                                        <div class="col-sm-12 col-md-12 col-lg-12">
+                                            <p>
+
+                                                <a href="/user/editservicing/{{serviceId}}" class="text-danger">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                    Edit
+                                                </a>
+                                            </p>
+
+
+                                            <a href="/user/deleteService/{{serviceId}}" class="card-link"
+                                                data-toggle="confirmation" data-title="Confirm Cancelation?">
+                                                <i class="far fa-trash-alt"></i>
+                                                Cancel
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="button" class=" btn btn-dark" data-toggle="modal"
+                                    data-target="#exampleModal{{serviceId}}">
+                                    Customer's Remarks
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal{{serviceId}}" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h2 class="modal-title text-dark" id="exampleModalLabel">More Details of
+                                                    {{title}} booking remarks </h2>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+
+
+                                                <div>
+                                                    <h4 class="text-dark">Remarks: </h4>
+                                                    <h5 class="text-info">{{story}}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                                
+                                {{/each}}
+                            </div>
+                            {{else}}
+                            <h3>No services jotted</h3>
+                            {{/if}}
+                        </div>
+
+                        <script>
+                            $('[data-toggle=confirmation]').confirmation({
+                                rootSelector: '[data-toggle=confirmation]',
+                            });
+                        </script>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+    </form>
+</div>

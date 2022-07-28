@@ -1,0 +1,151 @@
+<div class="container"> 
+    <div class="card card-body ">
+            <h1>Test Drive Appointment Booking</h1> 
+
+        <form action="" method="post">
+     
+                    <div class="row mb-3">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+
+
+                    {{!-- <div class="form-group">
+                        <label for="cust">Customer ID</label>
+                        <input type="text" class="form-control" name="custid" value="" required>
+                    </div> --}}
+
+            {{#if user}}
+                    <div class="form-group">
+                        <label for="name"> Name</label>
+                        <input type="text" class="form-control" name="name"value="{{ user.firstname}} {{ user.lastname}}"  readonly required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" value="{{ user.email}}" readonly required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="num"> Phone</label>
+                        <input type="text" class="form-control" name="num" value="{{ user.phone}}" readonly required>
+                    </div>
+
+                    <label for="cars">Car Model:</label>
+                    <select id="cars" class="form-control"name="cars">
+                        <option value="gla">GLA SUV</option>
+                        <option value="gclass">G-Class</option>
+                        <option value="eclass">E-Class Coupe</option>
+                        <option value="aclass">A-Class Hatchback</option>
+                        <option value="eqb">EQB</option>
+                        <option value="gtr">GT R Coupe</option>
+                        <option value="roadster">GT C Roadster</option>
+
+                    </select>
+
+
+                   
+
+                    <div class="form-group">
+
+                        <label class="font-italic">Date</label>
+                        <input id="datepicker" width="200" class="form-control" name="date" id="date"  />
+
+                    </div>
+
+ <div class="form-group">
+                        <label for="time"> Time: </label>
+                        <input type="time" class="form-control" name="time" value="" required>
+                    </div>
+                    <label for="location">Location:</label>
+                    <select id="location" class="form-control" name="location">
+                        <option value="amk">Ang Mo Kio</option>
+                        <option value="ubi">Ubi</option>
+                        <option value="jurong">Jurong</option>
+                        <option value="tamp">Tampines</option>
+
+
+                    </select>
+
+                    <br>
+                    <button id="btnSubmit" type="submit" class="btn btn-primary">Submit
+                    </button>
+        </form>
+    </div>
+
+    {{else}}
+
+    <div class="form-group">
+                        <label for="name"> Name</label>
+                        <input type="text" class="form-control" name="name" value="" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" value="" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="num"> Phone</label>
+                        <input type="text" class="form-control" name="num" value="" required>
+                    </div>
+
+                    <label for="cars">Car Model:</label>
+                    <select id="cars" class="form-control"name="cars">
+                        <option value="gla">GLA SUV</option>
+                        <option value="gclass">G-Class</option>
+                        <option value="eclass">E-Class Coupe</option>
+                        <option value="aclass">A-Class Hatchback</option>
+                        <option value="eqb">EQB</option>
+                        <option value="gtr">GT R Coupe</option>
+                        <option value="roadster">GT C Roadster</option>
+
+                    </select>
+
+
+            
+
+                    <div class="form-group">
+
+                        <label class="font-italic">Date</label>
+                        <input id="datepicker" width="200" class="form-control" name="date" id="date" readonly />
+
+                    </div>
+
+  <div class="form-group">
+                        <label for="time"> Time: </label>
+                        <input type="time" class="form-control" name="time" value="" required>
+                    </div>
+
+                    <label for="location">Location:</label>
+                    <select id="location" class="form-control" name="location">
+                        <option value="amk">Ang Mo Kio</option>
+                        <option value="ubi">Ubi</option>
+                        <option value="jurong">Jurong</option>
+                        <option value="tamp">Tampines</option>
+
+
+                    </select>
+
+                    <br>
+                    <button id="btnSubmit" type="submit" class="btn btn-primary">Submit
+                    </button>
+        </form>
+    </div>
+
+{{/if}}
+
+    <div class="col-md-6 banner-sec">
+			<img class="d-block img-fluid" src="/img/mer.jpg" alt="">
+
+		</div>
+</div>
+
+<script>
+    $('#datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        uiLibrary: 'bootstrap4',
+        value: moment().format('DD/MM/YYYY'),
+    });
+</script>
+

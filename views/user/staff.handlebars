@@ -1,0 +1,102 @@
+<div class="container">
+    <h1 class="text-white">Users Management</h1>
+    <a href="/user/createUser" class="btn rounded-lg ">Add New</a>
+    <br><br>
+    <div>
+        <ul class="nav nav-pills tab">
+            <li class="nav-item">
+                <a class="nav-link tablinks" href="/user/listuser">All</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/user/customer">Customer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/user/staff">Staff</a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <table class="table tab">
+            <thead>
+                <tr>
+
+                    <th>Customer ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            {{#if staffs}}
+            <tbody>
+                {{#each staffs}}
+                <tr>
+                     <td class="align-middle">{{id}}</td>
+                    <td class="align-middle">{{firstname}}</td>
+                    <td class="align-middle">{{lastname}}</td>
+                    <td class="align-middle">{{email}}</td>
+                    <td class="align-middle">{{[roles.role]}}</td>
+                     {{!-- <td class="align-middle">{{[addresses.address]}}</td> --}}
+
+                    <td>
+                        <a href="/user/editUser/{{id}}">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                    </td>
+                    {{!-- <td class="align-middle">{{[user.id]}}</td>
+                    <td class="align-middle">{{[user.firstname]}}</td>
+                    <td class="align-middle">{{[user.lastname]}}</td>
+                    <td class="align-middle">{{[user.email]}}</td>
+                    <td class="align-middle">{{role}}</td>
+
+                    <td>
+                        <a href="/user/editUser/{{[user.id]}}">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                    </td> --}}
+
+                </tr>
+                {{/each}}
+                {{else}}
+                <tr>
+                    <td>
+                        <h3>No user</h3>
+                    </td>
+                </tr>
+            </tbody>
+            {{/if}}
+
+
+        </table>
+    </div>
+
+    <div class="clearfix">
+                <div class="text-white">Showing <b>5</b> out of <b>25</b> entries</div>
+                <ul class="pagination">
+                    <li class="page-item "><a href="/:staff" class="page-link"><i class="fa fa-angle-double-left"></i></a></li>
+                    <li class="page-item"><a href="/:staff" class="page-link">1</a></li>
+                    <li class="page-item"><a href="/page" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
+                </ul>
+            </div>
+        
+</div>
+<style>
+    h3,
+    h2 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: #8B0000;
+    }
+
+ 
+</style>
+
+<script>
+    $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+    });
+</script>

@@ -1,0 +1,58 @@
+<div class="container mt-4">
+	<div class="row  bg-color">
+		<div class="col-md-4 mt-3">
+			<h3 class="text-center ">Account Register</h3>
+
+			<form action="" method="post">
+				<div class="form-group">
+					<label for="name">First Name</label>
+					<input type="text" class="form-control" name="firstname" value="{{firstname}}" required>
+				</div>
+				<div class="form-group">
+					<label for="name">Last Name</label>
+					<input type="text" class="form-control" name="lastname" value="{{lastname}}" required>
+				</div>
+
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input type="email" name="email" class="form-control" value="{{email}}" required>
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" name="password" class="form-control" value="" required>
+				</div>
+				<div class="form-group">
+					<label for="password2">Confirm Password</label>
+					<input type="password" name="password2" class="form-control" value="" required>
+				</div>
+				{{!-- <div class="form-group">
+					<label class="font-italic">Role</label>
+					<br>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" id="Staff" value="Staff" name="role">
+						<label class="form-check-label" for="Staff">Staff</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" id="Customer" value="Customer" name="role">
+						<label class="form-check-label" for="Customer">Customer</label>
+					</div>
+				</div> --}}
+				<div class="text-center">
+					<button type="submit" class="btn btn-user">Create Account</button>
+				</div>
+				<div class="text-center ">
+					<p class="text-white text-center  mt-3 mb-3">Already have an account? <a href="/user/login"
+							class="text-white font-weight-bold ml-1">login</a></p>
+				</div>
+
+			</form>
+
+		</div>
+		<div class="col-md-8 banner-sec">
+			{{!-- <img class="d-block img-fluid" src="/img/login image.png" alt="" style="max: width 100%; height:100%;"> --}}
+			<img class="d-block img-fluid" src="/img/Page.png" alt="" style="max: width 100%; height:100%;">
+
+		</div>
+
+	</div>
+</div>

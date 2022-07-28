@@ -1,0 +1,122 @@
+<div class="container bg-color mt-3">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4 p-4 bg-white">
+                <div class="profile-img">
+                    <a href="{{imgURL}}" data-title="{{title}}" data-toggle="lightbox">
+                        <img src="{{user.imgURL}}" alt="Poster" class="img-thumbnail img-fluid mb-2"
+                            onerror="this.src='/img/no-image.jpg'">
+                    </a>
+                </div>
+                <h3 class="text-dark">Welcome back, <br>
+                    {{user.firstname}} {{user.lastname}} !
+                </h3>
+                <nav class="navbar navbar-light navbar-expand-sm px-0 flex-row flex-nowrap">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarWEX"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse" id="navbarWEX">
+                        <div class="nav flex-sm-column flex-row">
+                            <h4>
+                                <a class="nav-item nav-link text-dark" href="/user/profile">Profile</a>
+                                <a href="/user/changepwd/{{user.id}}" class="nav-item nav-link text-dark">Change
+                                    Password</a>
+                                <a href="/user/addressList" class="nav-item nav-link text-dark">Address</a>
+                                <a href="/user/paymentMethod" class="nav-item nav-link actives">Payment Method</a>
+                                {{#if user}}
+                                {{#checkCustomer user.dataValues.role}}
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link text-dark dropdown-toggle" data-toggle="dropdown"
+                                        id="navbarDropdownMenuLink">My Booking</a>
+                                    <div class="dropdown-menu">
+                                        <a href="/user/testDrivehistory" class="dropdown-item">Test Drive</a>
+                                        <a href="/user/servicingHistory" class="dropdown-item">Servicing</a>
+                                    </div>
+                                </div>
+                                <a href="/user/ordersHistory" class="nav-item nav-link  text-dark ">Orders</a>
+                                {{/checkCustomer}}
+                                {{/if}}
+                            </h4>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-md-8 p-4">
+                <div class="container">
+                    <div class=" center-block">
+                        <br>
+                        <h2>Payment Method
+                            <span class="pull-right">
+
+                                <a href="/user/addPayment" class="btn btn-dark  ">Add Payment Method</a>
+                            </span>
+                        </h2>
+                        <br>
+                    </div>
+                </div>
+
+                <div>
+                    <table class="table tab">
+                        <thead>
+                            <tr>
+
+                                <th>Name of Card</th>
+                                <th>Card Number</th>
+                                <th>Expiry Date</th>
+                                <th>Cvv</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        {{#if payments}}
+                        <tbody>
+                            {{#each payments}}
+                            <tr>
+                                <td class="align-middle">{{nameOfCard}}</td>
+                                <td class="align-middle">{{cardNumber}}</td>
+                                <td class="align-middle"> {{month}}/{{year}}</td>
+                                <td class="align-middle">{{cvv}}</td>
+                                <td>
+                                    <a href="/user/editpayment/{{paymentId}}">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                            {{/each}}
+                            {{else}}
+                            <tr>
+                                <td colspan="6">
+                                    <h5>No detail of card</h5>
+                                </td>
+                            </tr>
+                        </tbody>
+                        {{/if}}
+
+
+                    </table>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </form>
+</div>
+<script>
+    $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+    });
+</script>
+<style>
+    .btn-dark {
+        background-color: black;
+        color: white;
+        border: none;
+    }
+</style>

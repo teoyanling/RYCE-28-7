@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-color">
+
+	<a class="navbar-brand" href="/"><img src="/img/logo.png" alt="" width="100px" height="40px">RYCE</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbar">
+		<ul class="nav navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/">HOME</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/product/ourcar">OUR CARS</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/product/Shoppart">SHOP PARTS</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/booking/TDform">TEST DRIVE</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/service/Sform">SERVICING</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/booking/Supportform">SUPPORT</a>
+			</li>
+			{{#if user}}
+			{{#checkStaff user.dataValues.role }}
+			<li class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle text-white" data-toggle="dropdown"
+					id="navbarDropdownMenuLink">STAFF</a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a href="/user/listuser" class="dropdown-item">Users Management</a>
+					<a href="/booking/bookings" class="dropdown-item">Bookings Management</a>
+					<a href="/product/productmanagement" class="dropdown-item">Products Management</a>
+					<a href="/checkout/ordermanagement" class="dropdown-item">Orders Management</a>
+					<a href="/service/listServices" class="dropdown-item">Service Management</a>
+				</div>
+			</li>
+			{{/checkStaff}}
+			<li class="nav-item">
+				<a class="nav-link text-white" href="/checkout/cart"><i style='font-size:24px'
+						class='fas'>&#xf07a;</i></a>
+			</li>
+			<li class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle text-white" data-toggle="dropdown"
+					id="navbarDropdownMenuLink">
+					<i class="material-icons">&#xe853;</i>
+					</a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a href="/user/logout" class="dropdown-item">LOGOUT</a>
+					<a href="/user/profile" class="dropdown-item">Profile</a>
+				</div>
+
+			</li>
+			{{else}}
+
+			<li class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle text-white" data-toggle="dropdown"
+					id="navbarDropdownMenuLink"><i class="material-icons">&#xe853;</i></a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a href="/user/login" class="dropdown-item">LOGIN</a>
+					<a href="/user/register" class="dropdown-item">SIGN UP</a>
+				</div>
+				{{/if}}
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<style>
+	.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+    // pointer-events: none;
+}
+
+</style>

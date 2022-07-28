@@ -1,0 +1,212 @@
+<div class="container bg-color mt-3">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4 p-4 bg-white">
+                <div class="profile-img">
+                    <a href="{{imgURL}}" data-title="{{title}}" data-toggle="lightbox">
+                        <img src="{{user.imgURL}}" alt="Poster" class="img-thumbnail img-fluid mb-2"
+                            onerror="this.src='/img/no-image.jpg'">
+                    </a>
+
+                </div>
+                <br>
+                <h3 class="text-dark">Welcome back, <br>
+                    {{user.firstname}} {{user.lastname}} !
+                </h3>
+                <nav class="navbar navbar-light navbar-expand-sm px-0 flex-row flex-nowrap">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarWEX"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse" id="navbarWEX">
+                        <div class="nav flex-sm-column flex-row">
+                            <h4>
+                                <a class="nav-item nav-link  actives" href="/user/profile">Profile</a>
+                                <a href="/user/changepwd/{{user.id}}" class="nav-item nav-link text-dark">Change
+                                    Password</a>
+                                <a href="/user/addressList" class="nav-item nav-link text-dark">Address</a>
+                                <a href="/user/paymentMethod" class="nav-item nav-link text-dark">Payment Method</a>
+                                {{#if user}}
+                                {{#checkCustomer user.dataValues.role}}
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link text-dark dropdown-toggle" data-toggle="dropdown"
+                                        id="navbarDropdownMenuLink">My Booking</a>
+                                    <div class="dropdown-menu">
+                                        <a href="/user/testDrivehistory" class="dropdown-item">Test Drive</a>
+                                        <a href="/user/servicingHistory" class="dropdown-item">Servicing</a>
+                                    </div>
+                                </div>
+                                <a href="/user/ordersHistory" class="nav-item nav-link text-dark">Orders</a>
+                                {{/checkCustomer}}
+                                {{/if}}
+                            </h4>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="col-md-8 p-4">
+                <h2 class="mb-3">Edit Profile</h2>
+
+                <div class="d-flex align-items-start py-3 border-bottom">
+
+                    <img id="img" src="/img/no-image.jpg" alt="img" class="border img-thumbnail img-fluid mb-2 img">
+                    <div class="pl-sm-4 pl-2" id="img-section">
+                        <b>Upload Image</b>
+                        <p>Accepted file type .png, .jpeg, .jpg, .gif</p>
+
+                        <input id="imgURL" type="hidden" name="imgURL">
+                        <div class="text-danger small mb-2" id="imgErr" style="display:none"></div>
+                        <div class="custom-file mb-2 ">
+                            <input type="file" class="custom-file-input" id="imgUpload" name="imgUpload"
+                                accept="image/png,image/jpeg,image/jpg,image/gif">
+                            <label class="custom-file-label" for="customFile" style="width: 100%;">Choose File</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="py-2">
+                    <div class="row py-2">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="firstname">First Name</label>
+                                <input type="text" class="form-control" name="firstname" value="{{user.firstname}}"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-md-0 pt-3">
+
+                            <div class="form-group">
+                                <label for="lastname">Last Name</label>
+                                <input type="text" class="form-control" name="lastname" value="{{user.lastname}}"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                {{!-- <a href="#" class="float-right text-white">Change</a> --}}
+                                <input type="text" class="form-control" name="email" value="{{user.email}}" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-md-0 pt-3">
+                            <div class="form-group">
+                            
+                                    <label for="gender">Gender</label>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="Female" value="Female"
+                                            name="gender" {{radioCheck user.gender "Female" }}>
+                                        <label class="form-check-label" for="Female">Female</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="Male" value="Male"
+                                            name="gender" {{radioCheck user.gender "Male" }}>
+                                        <label class="form-check-label" for="Male">Male</label>
+                                    </div>
+                                {{!-- </div> --}}
+                                {{!-- <label for="gender">Gender</label>
+                                <select class="form-control" id="gender" name="gender">
+                                    <option value="Female" id="Female" name="gender" {{ droplist user.gender "Female"
+                                        }}>Female</option>
+                                    <option value="Male" id="Male" name="gender" {{ droplist user.gender "Male" }}>Male
+                                    </option>
+                                </select> --}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row py-2">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="bday">Birthday(MM/DD/YY)</label>
+                                <input id="datepicker" class="form-control" name="bday" id="bday" value="{{user.bday}}"
+                                    readonly />
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-md-0 pt-3">
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                {{!-- <a href="#" class="float-right text-white">Change</a> --}}
+                                <input type="text" class="form-control" name="phone" placeholder="Phone Numebr"
+                                    value="{{user.phone}}" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="py-3 pb-4">
+                        <a href="/user/profile" class="btn btn-light rounded-lg ">Cancel</a>
+                        <button id="btnSubmit" type="submit" class="btn btn-dark rounded-lg">Save</button>
+                    </div>
+                </div>
+            </div>
+
+
+    </form>
+</div>
+<style>
+    .img {
+        width: 30%;
+        height: 30%;
+
+
+    }
+
+    #img-section p,
+    #deactivate p {
+        font-size: 15px;
+        margin-bottom: 10px;
+        text-align: justify;
+    }
+
+    #img-section b,
+    #img-section button,
+    #deactivate b {
+        font-size: 18px;
+    }
+
+    label {
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 500;
+        padding-left: 3px;
+    }
+
+    .form-control {
+        border-radius: 10px;
+    }
+
+
+    .btn-dark {
+        background-color: black;
+        border: none;
+        color: white;
+    }
+
+    .btn-dark:hover {
+        background-color: white;
+        border: none;
+        color: black;
+    }
+
+    .a,
+    .btn-light {
+        background-color: white;
+        border: none;
+        color: #8B0000;
+    }
+
+    .a,
+    .btn-light:hover {
+        background-color: white;
+        border: none;
+        color: #8B0000;
+    }
+</style>
+<script>
+    $('#datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        uiLibrary: 'bootstrap4',
+        value: moment().format('DD/MM/YYYY'),
+    });
+</script>

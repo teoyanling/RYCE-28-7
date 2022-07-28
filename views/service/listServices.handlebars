@@ -1,0 +1,102 @@
+<div class="container">
+    <h1 class="text-white">Servicing Booking Management</h1>
+    <a href="/service/addServices/" class="btn rounded-lg ">Add New</a>
+    <br><br>
+    <section id="search" class="search-wrap">
+    <form action="/service/search" class="search=form">
+    <i class="fas fa-search"></i>
+    <input type="search" name="term" placeholder="Car Plate">
+    <input type="submit" value="Search">
+    </form>
+  </section>
+  <br>
+    <div>
+        
+    </div>
+    <div>
+        <table class="table tab">
+            <thead>
+                <tr>
+
+                    <th>Customer ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Car Plate</th>
+					<th>Car Model</th>
+                    <th>Date</th>
+                    <th>Time</th>
+					<th>Service Type</th>
+                    <th>Location</th>
+					<th>Remarks</th>
+                    <th>Amend</th>
+                </tr>
+            </thead>
+            {{#if services}}
+            <tbody>
+                {{#each services}}
+                <tr>
+                    <td>{{title}} </td>
+                    <td>{{name}}</td>
+                    <td>{{email}}</td>
+                    <td>{{phone}}</td>
+                    <td>{{carP}}</td>
+					<td>{{carM}}</td>
+                    <td>{{formatDate date 'DD/MM/YYYY'}}</td>
+                    <td>{{time}}</td>
+					<td>{{classification}}</td>
+                    <td>{{location}}</td>
+					<td>
+                        <button type="button" class=" btn btn-primary" data-toggle="modal"
+                            data-target="#exampleModal{{serviceId}}">
+                            Customer's Remarks 
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal{{serviceId}}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title" id="exampleModalLabel">More Details of {{title}} booking remarks </h2>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        
+                                    
+                                        <div>
+                                            <h4>Remarks: </h4>
+                                            <h5>{{story}}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+   
+                    <td>
+                        <a href="/service/editServices/{{userId}}" class="text-danger">
+                            <i class="fas fa-pencil-alt"></i>
+                            Edit
+                        </a>
+                    </td>
+
+                </tr>
+                {{/each}}
+                {{else}}
+                <tr>
+                    <td>
+                        <h3>No test drive booking</h3>
+                    </td>
+                </tr>
+            </tbody>
+            {{/if}}
+        </table>
+    </div>
+</div>

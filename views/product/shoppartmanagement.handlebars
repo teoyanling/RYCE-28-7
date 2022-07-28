@@ -1,0 +1,55 @@
+<div class="container mt-3">
+    <h1 class="text-white">Product Management</h1>
+    <a href="/product/addproduct" class="btn list-btn rounded-lg ">Add New Car</a>
+    <a href="/product/addshoppart" class="btn list-btn rounded-lg ">Add Shop Parts</a>
+    <br><br>
+    <a href="/product/productmanagement" class="btn list-btn rounded-lg ">Car</a>
+    <a href="/product/shoppartmanagement" class="btn list-btn rounded-lg ">Shop Parts</a>
+    <div>
+        <table class="table tab">
+            <thead>
+                <tr>
+                    <th>Img</th>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            {{#if shopparts}}
+            <tbody>
+                {{#each shopparts}}
+                <tr>
+                    <td class="align-middle"><a href="{{imgURL}}" data-title="{{title}}" data-toggle="lightbox">
+                        <img src="{{imgURL}}" alt="img" class="img-thumbnail img-fluid mb-2"
+                            onerror="this.src='/img/no-image.jpg'">
+                    </a></td>
+                    <td class="align-middle">{{productId}}</td>
+                    <td class="align-middle">{{name}}</td>
+                    <td class="align-middle">${{price}}</td>
+                    <td>
+                        <a href="/product/editshoppart/{{productId}}">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                    </td>
+
+                </tr>
+                {{/each}}
+                {{else}}
+                <tr>
+                    <td>
+                        <h3>No Products</h3>
+                    </td>
+                </tr>
+            </tbody>
+            {{/if}}
+
+
+        </table>
+    </div>
+</div>
+<script>
+    $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+    });
+</script>

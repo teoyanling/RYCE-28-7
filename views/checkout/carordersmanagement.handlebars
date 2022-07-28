@@ -1,0 +1,143 @@
+<div class="container mt-3">
+<h1 class="text-white">Orders Management</h1>
+<br><br><br>
+<a href="/checkout/addcarorders" class="btn rounded-lg ">Add Car Order</a>
+<br><br>
+<div>
+    <div class="filter">
+        <ul class="nav nav-pills tab ">
+            <li class="nav-item">
+                <a class="nav-link " href="/checkout/ordermanagement">Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link tablinks active" href="/checkout/carordersmanagement">Cars</a>
+            </li>
+        </ul>
+    </div>
+    <div class="table">
+        <table class="table tab ">
+            <thead>
+                <tr>
+
+                    <th>Car Order ID</th>
+                    {{!-- <th>Customer ID</th> --}}
+                    <th>Car ID</th>
+                    <th>Car Name</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Amount</th>
+                    <th>Order Date</th>
+                    <th>Delivery Status</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            {{#if carOrders}}
+            <tbody>
+                {{#each carOrders}}
+                <tr>
+                    <td class="align-middle">{{carOrderId}}</td>
+                    {{!-- <td class="align-middle">{{userId}}</td> --}}
+                    <td class="align-middle">{{carId}}</td>
+                    <td class="align-middle">{{carName}}</td>
+                    <td class="align-middle">{{quantity}}</td>
+                    <td class="align-middle">${{unitPrice}}</td>
+                    <td class="align-middle">${{amount}}</td>
+                    <td class="align-middle">{{formatDate orderDate 'DD MMM YYYY'}}</td>
+                    <td class="align-middle" value="green" style="color: green;" {{deliverycolour
+                        deliveryStatus "Delivered" }}>
+                        delivered
+                    </td>
+                    <td class="align-middle" value="red" style="color: red;" {{deliverycolour deliveryStatus "Pending"
+                        }}>
+                        pending
+                    </td>
+                    <td>
+                        <a href="/checkout/editcarorders/{{carOrderId}}">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#exampleModal{{carOrderId}}">
+                            Show Details
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal{{carOrderId}}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title" id="exampleModalLabel">More Details of user {{userId}}'s order</h2>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            <h3>Name</h3>
+                                            <h5>{{firstname}} {{lastname}}</h5>
+                                        </div>
+                                        <br>
+                                        <hr>
+                                        <br>
+                                        <div>
+                                            <h3>HP number</h3>
+                                            <h5>{{phone}}</h5>
+                                        </div>
+                                        <br><hr><br>
+                                        <div>
+                                            <h3>email</h3>
+                                            <h5>{{email}}</h5>
+                                        </div>
+                                        <br><hr><br>
+                                        <div>
+                                            <h3>Address</h3>
+                                            <h5>{{address}}
+                                                {{unitNumber}},
+                                                s{{postalCode}}</h5>
+                                        </div>
+                                        <br>
+                                        <hr>
+                                        <br>
+                                        <div>
+                                            <h3>Extra Notes</h3>
+                                            <h5>{{notescheck notes}}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+                {{/each}}
+                {{else}}
+                <tr>
+                    <td>
+                        <h3>no car orders </h3>
+                    </td>
+                </tr>
+                {{/if}}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+<style>
+    h3,
+    h2 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: #8B0000;
+    }
+
+    h1, .nav-item{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+</style>

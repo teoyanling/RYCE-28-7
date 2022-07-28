@@ -1,0 +1,91 @@
+<div class="container mt-3">
+    <div class="card card-body">
+        <h3>Edit TD Booking</h3>
+        <form action="" method="post">
+            <div class="row mb-3">
+                <div class="col-lg-9">
+
+
+                    {{!-- <div class="form-group">
+                        <label for="name">Customer ID</label>
+                        <input type="text" class="form-control" name="custid" value="" required>
+                    </div> --}}
+
+                    <div class="form-group">
+                        <label for="name"> Name</label>
+                        <input type="text" class="form-control"   name="name" value="{{ booking.name}}"  readonly required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email"  class="form-control" value="{{ booking.email}} " readonly required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="num"> Phone</label>
+                        <input type="text" class="form-control"  name="num" value="{{ booking.num}}" readonly required>
+                    </div>
+
+                    <label for="cars">Car Model:</label>
+                    <select id="cars" class="form-control"  name="cars">
+                        <option value="gla" {{ droplist booking.cars  "gla"}}>GLA SUV</option>
+                        <option value="gclass" {{ droplist booking.cars  "gclass"}}>G-Class</option>
+                        <option value="eclass" {{ droplist booking.cars  "eclass"}}>E-Class Coupe</option>
+                        <option value="aclass" {{ droplist booking.cars  "aclass"}}>A-Class Hatchback</option>
+                        <option value="eqb"{{ droplist booking.cars  "eqb"}}>EQB</option>
+                        <option value="gtr" {{ droplist booking.cars  "gtr"}}>GT R Coupe</option>
+                        <option value="roadster" {{ droplist booking.cars  "roadster"}}>GT C Roadster</option>
+
+                    </select>
+                   <div class="form-group">
+
+                        <label class="font-italic">Date</label>
+                        <input id="datepicker" width="200" class="form-control"  value="{{formatDate booking.date 'DD/MM/YYYY' }}" name="date" id="date"  />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="time"> Time: </label>
+                        <input type="time" class="form-control"  name="time" value="{{ booking.time}}"  id="time"  required>
+                    </div>
+
+
+                     <label for="location">Location:</label>
+                    <select id="location" class="form-control" name="location" id="location" value="">
+                        <option value="amk" id="amk" name="location" {{ droplist booking.location  "amk"}}>Ang Mo Kio</option>
+                        <option value="ubi" id="ubi" name="location" {{ droplist booking.location "ubi"}}  >Ubi</option>
+                        <option value="jurong" id="jurong" name="location" {{ droplist booking.location "jurong"}}>Jurong</option>
+                        <option value="tamp" id="tamp" name="location" {{ droplist booking.location "tamp"}}>Tampines</option>
+
+
+                    </select>
+
+                    <br>
+                    <button id="btnSubmit" type="submit" class="btn btn-primary">Add
+                    </button>
+                    <a href="/user/testDrivehistory" class="btn" role="button">Cancel</a>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    $('#datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        uiLibrary: 'bootstrap4',
+        value: moment().format('DD/MM/YYYY'),
+    });
+</script>
+
+{{!-- <div class="col-lg-3">
+    <div class="custom-file mb-2">
+        <input type="file" class="custom-file-input" id="posterUpload" name="posterUpload"
+            accept="image/png,image/jpeg,image/jpg,image/gif">
+        <label class="custom-file-label" for="customFile">Choose File</label>
+    </div>
+    <div class="text-danger small mb-2" id="posterErr" style="display:none"></div>
+    <img id="poster" src="/img/no-image.jpg" alt="Poster" class="border img-thumbnail img-fluid">
+    {{!—- Hidden field to submit URL of poster to the server --}}
+    <input id="posterURL" type="hidden" name="posterURL">
+</div> --}}

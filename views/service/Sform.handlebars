@@ -1,0 +1,247 @@
+<div class="container">
+	<div class="card card-body ">
+		
+		 <div class="col-md-12 banner-sec">
+			<img class="d-block img-fluid" src="/img/Mercedes-Benz-G-Class-Category-Banner-800x213.jpeg" alt="">
+<br>
+		</div>
+		<h3>Car Servicing Appointment </h3>
+		<form action="" method="post">
+			 {{#if user}}
+			<div class="form-group">
+				<label class="font-italic" for="title">Customer ID</label>
+				<input class="form-control" id="title" name="title" value="{{user.id}}" onblur="initialiseTitle()"  readonly/>
+			</div>
+		
+			<div class="form-group mb-2">
+			<label for="name">Name</label>
+					<input type="name" id="name" name="name" value="{{user.firstname}}  {{user.lastname}}" class="form-control" readonly required>
+			</div>
+
+			<div class="form-group mb-2">
+			<label for="email">Email</label>
+					<input type="email" id="email" name="email" value="{{user.email}}" class="form-control" readonly required>
+			</div>
+
+			<div class="form-group mb-2">
+			<label for="phone">Phone</label>
+					<input type="type" id="phone" name="phone" value="{{user.phone}}" class="form-control" readonly required>
+			</div>
+
+			<div class="form-group mb-2">
+			<label for="carP">Car Plate</label>
+					<input type="carP" id="carP" name="carP" class="form-control" required>
+			</div>
+<div class="form-group mb-2">
+			<label for="carM">Car Model:</label>
+			<br>
+<select id="carM" name="carM" class="form-control">
+ <option value="amg">Amg 769</option>
+					<option value="gtx">GTX 34</option>
+					<option value="clc">CLC Suv</option>
+					<option value="gla">GLA SUV</option>
+					<option value="gclass">G-Class</option>
+					<option value="eclass">E-Class Coupe</option>
+					<option value="aclass">A-Class Hatchback</option>
+					<option value="eqb">EQB</option>
+					<option value="gtr">GT R Coupe</option>
+					<option value="roadster">GT C Roadster</option>
+</select>
+</div>
+
+
+
+
+			<div class="form-group">
+				<div class="row mb-2">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-6 mb-4">
+						<label class="font-italic">Date</label>
+						<input id="datepicker" width="200" class="form-control" name="dateRelease"  />
+					</div>
+
+				
+					<div class="col-12 col-sm-12 col-md-12 col-lg-6">
+						
+						<label class="font-italic">Time</label>
+						<br>
+						<input type="time" id="time" class="form-control" width="100" name="time"/>
+						</div>
+	
+<div class="col-12 col-sm-12 col-md-12 col-lg-6">
+			<label for="location">Location:</label>
+			<br>
+<select id="location" name="location" class="form-control">
+  <option value="amk">Ang Mo Kio</option>
+  <option value="ubi">Ubi </option>
+  <option value="jurong">Jurong</option>
+  <option value="tampines">Tampines</option>
+</select>
+</div>
+			
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Service Type</label>
+						<br>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" id="G" value="Pre-Inspection [$120]" name="Service Type" checked>
+							<label class="form-check-label" for="G">Pre-Inspection [$120]</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" id="PG" value="Engine Oil [$80]" name="Service Type">
+							<label class="form-check-label" for="PG">Engine Oil [$80] </label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" id="PG13" value="Tyre Rotation [$50]" name="Service Type">
+							<label class="form-check-label" for="PG13">Tyre Rotation [$50]</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" id="NC13" value="Vehicle Grooming [$30]" name="classification">
+							<label class="form-check-label" for="NC13">Vehicle Grooming [$30]</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" id="M18" value="Lubrication Services [$35]" name="classification">
+							<label class="form-check-label" for="M18">Lubrication Services [$35]</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" id="R21" value="Pre-Viscom Checks [$120]" name="classification">
+							<label class="form-check-label" for="R21">Pre-Viscom Checks [$120]</label>
+						</div>
+					</div>
+				</div>
+
+				
+
+			<div class="form-group mb-4">
+				<label class="font-italic" for="story">Remarks</label>
+				<textarea class="form-control" id="story" name="story" rows="7" maxlength="2000"></textarea>
+			</div>
+
+			</div>
+			<br>
+			<button id="btnSubmit" type="submit" class="btn btn-primary">Submit
+			</button>
+		</form>
+	</div>
+
+{{else}}
+<div class="form-group">
+				<label class="font-italic" for="title">Customer ID</label>
+				<input class="form-control" id="title" name="title" onblur="initialiseTitle()" readonly />
+			</div>
+		
+			<div class="form-group mb-2">
+			<label for="name">Name</label>
+					<input type="name" id="name" name="name" class="form-control" required>
+			</div>
+
+			<div class="form-group mb-2">
+			<label for="email">Email</label>
+					<input type="email" id="email" name="email" class="form-control" required>
+			</div>
+
+			<div class="form-group mb-2">
+			<label for="email">Phone</label>
+					<input type="number" id="phone" name="phone" class="form-control" required>
+			</div>
+
+			<div class="form-group mb-2">
+			<label for="carP">Car Plate</label>
+					<input type="carP" id="carP" name="carP" class="form-control" required>
+			</div>
+<div class="form-group mb-2">
+			<label for="carM">Car Model:</label>
+			<br>
+<select id="carM" name="carM" class="form-control">
+ <option value="amg">Amg 769</option>
+					<option value="gtx">GTX 34</option>
+					<option value="clc">CLC Suv</option>
+					<option value="gla">GLA SUV</option>
+					<option value="gclass">G-Class</option>
+					<option value="eclass">E-Class Coupe</option>
+					<option value="aclass">A-Class Hatchback</option>
+					<option value="eqb">EQB</option>
+					<option value="gtr">GT R Coupe</option>
+					<option value="roadster">GT C Roadster</option>
+</select>
+</div>
+
+
+
+
+			<div class="form-group">
+				<div class="row mb-2">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-6 mb-4">
+						<label class="font-italic">Date of release</label>
+						<input id="datepicker" width="200" class="form-control" name="dateRelease" readonly />
+					</div>
+
+				
+					<div class="col-12 col-sm-12 col-md-12 col-lg-6">
+						
+						<label class="font-italic">Time</label>
+						<br>
+						<input type="time" id="time" class="form-control" width="100" name="time"/>
+						</div>
+	
+<div class="col-12 col-sm-12 col-md-12 col-lg-6">
+			<label for="location">Location:</label>
+			<br>
+<select id="location" name="location" class="form-control">
+  <option value="amk">Ang Mo Kio</option>
+  <option value="ubi">Ubi </option>
+  <option value="jurong">Jurong</option>
+  <option value="tampines">Tampines</option>
+</select>
+</div>
+			
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Service Type</label>
+						<br>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" id="G" value="Pre-Inspection [$120]" name="Service Type" checked>
+							<label class="form-check-label" for="G">Pre-Inspection [$120]</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" id="PG" value="Engine Oil [$80]" name="Service Type">
+							<label class="form-check-label" for="PG">Engine Oil [$80] </label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" id="PG13" value="Tyre Rotation [$50]" name="Service Type">
+							<label class="form-check-label" for="PG13">Tyre Rotation [$50]</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" id="NC13" value="Vehicle Grooming [$30]" name="classification">
+							<label class="form-check-label" for="NC13">Vehicle Grooming [$30]</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" id="M18" value="Lubrication Services [$35]" name="classification">
+							<label class="form-check-label" for="M18">Lubrication Services [$35]</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" id="R21" value="Pre-Viscom Checks [$120]" name="classification">
+							<label class="form-check-label" for="R21">Pre-Viscom Checks [$120]</label>
+						</div>
+					</div>
+				</div>
+
+				
+
+			<div class="form-group mb-4">
+				<label class="font-italic" for="story">Remarks</label>
+				<textarea class="form-control" id="story" name="story" rows="7" maxlength="2000"></textarea>
+			</div>
+
+			</div>
+			<br>
+			<button id="btnSubmit" type="submit" class="btn btn-primary">Submit
+			</button>
+		</form>
+	</div>
+
+{{/if}}
+<script>
+	$('#datepicker').datepicker({
+		format: 'dd/mm/yyyy',
+		uiLibrary: 'bootstrap4',
+		value: moment().format('DD/MM/YYYY'),
+	});
+</script>

@@ -1,0 +1,73 @@
+<div class="container mt-3">
+  {{#if shopparts}}
+  <h3 class="text-white">Shop Parts</h3>
+  {{#each shopparts}}
+  <form action="" method="post" class="needs-validation">
+    <div class="ourcar">
+      <a href="{{imgURL}}" data-title="{{title}}" data-toggle="lightbox">
+        <img src="{{imgURL}}" alt="img" class="img-thumbnail img-fluid mb-2" onerror="this.src='/img/no-image.jpg'">
+      </a>
+      <h4 name="productId" hidden>product id</h4>
+      <h4 class="text-white">Product:<br>{{name}}<br></h4>
+      <p class="text-white" class="price">Price:<br>${{price}}<br></p>
+      {{!-- <button data-name="name" data-price="price" class="add-to-cart btns">
+        Add to cart
+      </button> --}}
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="form-group">
+          <input type="text" class="form-control" name="shoppartProductId" value="{{productId}}" hidden>
+        </div>
+      </div>
+      <button id="btnSubmit" type="submit" class="add-to-cart btn btn-primary">Add to cart
+      </button>
+    </div>
+  </form>
+  <br>
+  <br>
+  {{/each}}
+</div>
+
+</div>
+{{else}}
+<h3 class="text-white">No Shop Parts Added</h3>
+{{/if}}
+
+<div class="container ">
+  <h3 class="text-white">Shop Parts</h3>
+<div class="container d-flex justify-content-center">
+  
+  {{#if shopparts}}
+
+  {{!-- <form action="" method="post" class="needs-validation"> --}}
+    {{#each shopparts}}
+
+    {{!-- <div class="row"> --}}
+      <div class="col-sm-5">
+        <div style="width 50%; height:50%;">
+       
+            <a href="{{imgURL}}" data-title="{{title}}" data-toggle="lightbox">
+            <img src="{{imgURL}}" alt="img" class="img-thumbnail img-fluid mb-2" onerror="this.src='/img/no-image.jpg'" style="width 200%; height:200%;" >
+          </a>
+       
+        </div>
+      {{!-- </div> --}}
+    
+    </div>
+
+   
+    {{/each}}
+</div>
+{{else}}
+<h3 class="text-white">No Shop Parts Added</h3>
+{{/if}}
+</div>
+
+<script>
+  $('[data-toggle=confirmation]').confirmation({
+    rootSelector: '[data-toggle=confirmation]',
+  });
+
+</script>
+
+
+<script src="helpers/cart.js"></script>

@@ -1,0 +1,78 @@
+<div class="container mt-3">
+    <div class="card card-body">
+
+        <h3>Add User</h3>
+
+
+        <form action="" method="post">
+            <div class="row mb-3">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label for="name">First Name</label>
+                        <input type="text" class="form-control" name="firstname" value="{{firstname}}" required>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label for="name">Last Name</label>
+                        <input type="text" class="form-control" name="lastname" value="{{lastname}}" required>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" value="{{email}}" required>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" value="" required>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label for="password2">Confirm Password</label>
+                        <input type="password" name="password2" class="form-control" value="" required>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <label class="font-italic">Role</label>
+                    <br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="Staff" value="Staff" name="role">
+                        <label class="form-check-label" for="Staff">Staff</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="Customer" value="Customer" name="role">
+                        <label class="form-check-label" for="Customer">Customer</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <a href="/user/listUser/{{id}}" class="btn" role="button">Cancel</a>
+            <button id="btnSubmit" type="submit" class="btn">Save
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    $('#datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        uiLibrary: 'bootstrap4',
+        value: moment().format('DD/MM/YYYY'),
+    });
+</script>
+
+{{!-- <div class="col-lg-3">
+    <div class="custom-file mb-2">
+        <input type="file" class="custom-file-input" id="posterUpload" name="posterUpload"
+            accept="image/png,image/jpeg,image/jpg,image/gif">
+        <label class="custom-file-label" for="customFile">Choose File</label>
+    </div>
+    <div class="text-danger small mb-2" id="posterErr" style="display:none"></div>
+    <img id="poster" src="/img/no-image.jpg" alt="Poster" class="border img-thumbnail img-fluid">
+    {{!—- Hidden field to submit URL of poster to the server --}}
+    <input id="posterURL" type="hidden" name="posterURL">
+</div> --}}

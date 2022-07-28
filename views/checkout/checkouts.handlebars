@@ -1,0 +1,211 @@
+<div class="container mt-3">
+	<div class="card card-body">
+		<h3>Add Order</h3>
+		<form action="" method="post" class="needs-validation" novalidate>
+			<div class="form-group">
+			</div>
+
+			<div class="form-group">
+				<div class="row ">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-3 ">
+						<label class="font-italic">Order Date</label>
+						<input id="datepicker" width="200" name="orderDate" readonly />
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">First Name</label>
+						<br>
+						<div>
+							<input type="text" class="form-control" id="firstname" name="firstname"
+								 required>
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Last Name</label>
+						<br>
+						<div>
+							<input type="text" class="form-control" id="lastname" name="lastname"
+								 required>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Phone Number</label>
+						<br>
+						<div>
+							<input type="text" class="form-control" id="phone" name="phone"
+								placeholder="+65 9876 4321" required>
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Email</label>
+						<br>
+						<div>
+							<input type="email" class="form-control" id="email" name="email"
+								placeholder="johndoe@gmail.com" required>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group needs-validation">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Product ID</label>
+						<br>
+						<div>
+							<input type="number" class="form-control" id="productId" name="productId" required>
+						</div>
+						<div class="invalid-feedback ">
+							Please Enter Product ID
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic" for="status">Delivery Status</label>
+						<br>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="deliveryStatus" id="statusPending"
+								value="Pending" checked
+								onclick="ensureOneCheck('deliveryStatus', 'deliveryStatusErr', 'btnSubmit')">
+							<label class="form-check-label" for="pending">Pending</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="deliveryStatus" id="statusDelivered"
+								value="Delivered"
+								onclick="ensureOneCheck('deliveryStatus', 'deliveryStatusErr', 'btnSubmit')">
+							<label class="form-check-label" for="delivered">Delivered</label>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Product Name</label>
+						<br>
+						<div>
+							<input type="text" class="form-control" id="productName" name="productName" required>
+						</div>
+						<div class="invalid-feedback">
+							Please Enter Product Name
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Quantity</label>
+						<br>
+						<div>
+							<input type="number" class="form-control" id="quantity" name="quantity" step="1" min="1"
+								required>
+						</div>
+						<div class="invalid-feedback">
+							Please Enter Quantity
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Unit Price</label>
+						<br>
+						<div>
+							<input type="number" class="form-control" id="unitPrice" name="unitPrice" min="0.00"
+								max="10000.00" step="0.01" required>
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Amount</label>
+						<br>
+						<div>
+							<input type="number" class="form-control" id="amount" name="amount" min="0.00"
+								max="10000.00" step="0.01" required>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="form-group mb-4">
+				<label for="inputAddress">Address</label>
+				<input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" required>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Postal Code</label>
+						<br>
+						<div>
+							<input type="text" class="form-control" id="postalCode" name="postalCode"
+								placeholder="123456" required>
+						</div>
+					</div>
+
+					<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+						<label class="font-italic">Unit Number</label>
+						<br>
+						<div>
+							<input type="text" class="form-control" id="unitNumber" name="unitNumber"
+								placeholder="#01-234" required>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="form-group mb-4">
+				<label class="font-italic" for="notes">Extra Notes</label>
+				<textarea class="form-control" id="notes" name="notes" rows="7" maxlength="2000" placeholder="optional"></textarea>
+			</div>
+			<br>
+			<button id="btnSubmit" type="submit" class="btn btn-primary">Save
+			</button>
+		</form>
+	</div>
+</div>
+
+<script>
+	$('#datepicker').datepicker({
+		format: 'dd/mm/yyyy',
+		uiLibrary: 'bootstrap4',
+		value: moment().format('DD/MM/YYYY'),
+	});
+
+	// Example starter JavaScript for disabling form submissions if there are invalid fields
+	(function () {
+		'use strict'
+
+		// Fetch all the forms we want to apply custom Bootstrap validation styles to
+		var forms = document.querySelectorAll('.needs-validation')
+
+		// Loop over them and prevent submission
+		Array.prototype.slice.call(forms)
+			.forEach(function (form) {
+				form.addEventListener('submit', function (event) {
+					if (!form.checkValidity()) {
+						event.preventDefault()
+						event.stopPropagation()
+					}
+
+					form.classList.add('was-validated')
+				}, false)
+			})
+	})()
+</script>

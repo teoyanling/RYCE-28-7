@@ -1,0 +1,204 @@
+<div class="container bg-color mt-3">
+    <form method="post" action="">
+        <div class="row">
+            <div class="col-md-4 p-4 bg-white">
+                <div class="profile-img">
+                    <a href="{{imgURL}}" data-title="{{title}}" data-toggle="lightbox">
+                        <img src="{{user.imgURL}}" alt="Poster" class="img-thumbnail img-fluid mb-2"
+                            onerror="this.src='/img/no-image.jpg'">
+                    </a>
+
+                </div>
+                <br>
+                <h3 class="text-dark">Welcome back, <br>
+                    {{user.firstname}} {{user.lastname}} !
+                </h3>
+                <nav class="navbar navbar-light navbar-expand-sm px-0 flex-row flex-nowrap">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarWEX"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse" id="navbarWEX">
+                        <div class="nav flex-sm-column flex-row">
+                            <h4>
+                                <a class="nav-item nav-link text-dark" href="/user/profile">Profile</a>
+                                <a href="/user/changepwd/{{user.id}}" class="nav-item nav-link text-dark">Change
+                                    Password</a>
+                                <a href="/user/addressList" class="nav-item nav-link text-dark">Address</a>
+                                <a href="/user/paymentMethod" class="nav-item nav-link actives">Payment Method</a>
+                                {{#if user}}
+                                {{#checkCustomer user.dataValues.role}}
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link text-dark dropdown-toggle" data-toggle="dropdown"
+                                        id="navbarDropdownMenuLink">My Booking</a>
+                                    <div class="dropdown-menu">
+                                        <a href="/user/testDrivehistory" class="dropdown-item">Test Drive</a>
+                                        <a href="/user/servicingHistory" class="dropdown-item">Servicing</a>
+                                    </div>
+                                </div>
+                                <a href="/user/ordersHistory" class="nav-item nav-link text-dark">Orders</a>
+                                {{/checkCustomer}}
+                                {{/if}}
+                            </h4>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-md-6 p-4">
+                <h2 class="mb-5">Payment Method</h2>
+                <div class="form-group">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="password" class="form-control" name="cardNumber" value="{{cardNumber}}" placeholder="4217 9264 8893 0038" value="secret" required>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="month">MM</label>
+                                <select id="month" class="form-control" name="month" placeholder="MM">
+                                    <option value="MM" {{ droplist month "MM"}} disabled selected>MM</option>
+                                    <option value="01" {{ droplist month "01"}}>01</option>
+                                    <option value="02" {{ droplist month "02"}}>02</option>
+                                    <option value="03" {{ droplist month "03"}}>03</option>
+                                    <option value="04" {{ droplist month "04"}}>04</option>
+                                    <option value="05" {{ droplist month "05"}}>05</option>
+                                    <option value="06" {{ droplist month "06"}}>06</option>
+                                    <option value="07" {{ droplist month "07"}}>07</option>
+                                    <option value="08" {{ droplist month "08"}}>08</option>
+                                    <option value="09" {{ droplist month "09"}}>09</option>
+                                    <option value="10" {{ droplist month "10"}}>10</option>
+                                    <option value="11" {{ droplist month "11"}}>11</option>
+                                    <option value="12" {{ droplist month "12"}}>12</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 pt-md-0 pt-3">
+
+                        <div class="form-group">
+                            <label for="YY">YY</label>
+                            <select id="year" class="form-control" name="year" placeholder="YY">
+                                <option value="YY"  {{ droplist year "YY"}} disabled selected>YY</option>
+                                <option value="22"  {{ droplist year "22"}}>22</option>
+                                <option value="23"  {{ droplist year "23"}}>23</option>
+                                <option value="24"  {{ droplist year "24"}}>24</option>
+                                <option value="25"  {{ droplist year "25"}}>25</option>
+                                <option value="26"  {{ droplist year "26"}}>26</option>
+                                <option value="27"  {{ droplist year "27"}}>27</option>
+                                <option value="28"  {{ droplist year "28"}}>28</option>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                {{!-- <div class="form-group">
+                    <label for="expiryDate">Expiry Date (MM/YY)</label>
+                    <input id="datepicker" width="200" name="expiryDate" value="{{expiryDate}}" readonly />
+                </div> --}}
+
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <!-- Button trigger modal -->
+                    <a href="#" class="text-white" data-toggle="modal" data-target="#CVVInfo">
+                        <i class='fas fa-info-circle'></i></a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="CVVInfo" tabindex="-1" aria-labelledby="CVVLabel" aria-hidden="true">
+                        <div class="modal-dialog  modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <div class="col text-center">
+                                        <img src="/img/CVV.png" alt="" style="width: 400px; height:350px;">
+                                    </div>
+                                    {{!-- <h5 class="modal-title text-dark" id="CVVLabel">Modal title</h5> --}}
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" style="font-size: 40px;">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h2 class="text-dark">The CVV code is a 3 digit code on the back of your credit card
+                                    </h2>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="text" class="form-control" name="cvv" value="{{cvv}}" placeholder="045" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nameOfCard">Name of card</label>
+                    <input type="text" class="form-control" name="nameOfCard" value="{{nameOfCard}}" placeholder="Name of card" required>
+                </div>
+
+                <h2>Billing Address</h2>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" name="address" value="{{addresses.address}}"
+                        readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="unitnumber">Unit Number</label>
+                    <input type="text" class="form-control" name="unitnumber" value="{{addresses.unitnumber}}"
+                        readonly="readonly">
+                </div>
+                <div class="form-group">
+                    <label for="postalcode">Postal Code</label>
+                    <input type="text" class="form-control" name="postalcode" value="{{addresses.postalcode}}"
+                        readonly="readonly">
+                </div>
+
+                <br>
+                <div>
+
+                    <a href="/user/paymentMethod" class="btn btn-light rounded-lg ">Cancel</a>
+                    <button id="btnSubmit" type="submit" class="btn btn-dark rounded-lg">Save</button>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+<style>
+    .btn-dark {
+        background-color: black;
+        border: none;
+        color: white;
+    }
+
+    .btn-dark:hover {
+        background-color: white;
+        border: none;
+        color: black;
+    }
+
+    .a,
+    .btn-light {
+        background-color: white;
+        border: none;
+        color: #8B0000;
+    }
+
+    .a,
+    .btn-light:hover {
+        background-color: white;
+        border: none;
+        color: #8B0000;
+    }
+
+    .modal-header {
+        border-bottom: none;
+    }
+</style>
+
+<script>
+    $('#datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        uiLibrary: 'bootstrap4',
+        value: moment().format('DD/MM/YYYY'),
+    });
+</script>
